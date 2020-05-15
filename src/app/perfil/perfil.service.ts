@@ -53,12 +53,15 @@ export class PerfilService {
     updateFileRemote(image, params){
         return new Promise((resolve, reject) => {
             this.dataService.getTokenAccess().then((token) => {
+                
                 const fileTransfer: FileTransferObject = this.transfer.create();
+
                 let options: FileUploadOptions = {
                     fileKey: 'foto',
                     fileName: 'imagedevice.jpg',
                     mimeType: "image/jpeg",
                     httpMethod: 'PUT',
+                    chunkedMode: false,
                     params: params
                 }
 

@@ -92,8 +92,8 @@ export class UpdateFotoModalPage implements OnInit {
 
 		        this.perfilService.updateFileRemote(this.image, params).then(
 		            (imageResult:any) => {
-		            	loading.dismiss();
 		                // console.log('IMAGE-RESULT: '+JSON.stringify(imageResult));
+		            	loading.dismiss();
 		                this.msg.show('Foto alterada com sucesso.');
 		                this.closeModal('refresh_data_aluno');
 		            },

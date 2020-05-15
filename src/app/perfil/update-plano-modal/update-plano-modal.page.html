@@ -1,0 +1,47 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title size="undefined">
+            <ion-item class="ion-no-padding ion-item-background-border-transparent">
+            	<ion-icon name="arrow-back" (click)="closeModal('null')"></ion-icon>
+                <img style="width: 30px; margin-left: 5px;" src="assets/images/logo-ciclo-educ.png"/>
+                <span class="text-toolbar-title" style="padding-top: 5px;">
+                    ATUALIZAR PLANO
+                </span>
+            </ion-item>
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+	<div class="align-center" *ngIf="!loading_data_plano && planos.length == 0"  style="padding-top: 15%;color: #0D313D;font-size: 20px;">
+		Nenhum plano disponível.
+	</div>
+
+	<ion-list *ngIf="!loading_data_plano && planos.length > 0">
+	  <ion-radio-group [(ngModel)]="plano_id">
+	    <ion-list-header>
+	      <ion-label style="font-size: 18px;">
+	      	<b>Planos:</b>
+	      </ion-label>
+	    </ion-list-header>
+
+	    <div *ngFor="let plano of planos">
+			<ion-item>
+		    	<ion-label style="white-space: normal;">{{ plano.nome }}</ion-label>
+		    	<span class="align-right" style="font-size: 13px;">
+		      		<b>Preço: R$ {{ plano.preco | moneyBrFormat }}</b><br/>
+		      		Adesão: R$ {{ plano.taxa_adesao | moneyBrFormat }}
+		      	</span>
+	      		<ion-radio slot="start" value="{{ plano.id }}"></ion-radio>
+		    </ion-item>	    	
+	    </div>
+	  </ion-radio-group>
+	</ion-list>
+
+</ion-content>
+
+<ion-footer class="ion-text-center" *ngIf="plano_id > 0">
+	<ion-button class="btn-big" (click)="salvar()">Salvar</ion-button>
+</ion-footer>

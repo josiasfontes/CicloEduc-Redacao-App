@@ -1,0 +1,94 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title size="undefined">
+            <ion-item class="ion-no-padding ion-item-background-border-transparent">
+            	<ion-icon name="arrow-back" (click)="closeModal('null')"></ion-icon>
+                <img style="width: 30px; margin-left: 5px;" src="assets/images/logo-ciclo-educ.png"/>
+                <span class="text-toolbar-title" style="padding-top: 5px;">
+                    ATUALIZAR DADOS
+                </span>
+            </ion-item>
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="background-content">
+
+
+	<div class="ion-padding">
+		<form [formGroup]="updateForm">
+			
+			<ion-item class="input-item">
+				<ion-label position="floating">Nome Completo</ion-label>
+				<ion-input formControlName="nome_completo" type="text"></ion-input>
+			</ion-item>
+			<div *ngIf="submitForm && !updateForm.controls.nome_completo.valid" class="error"> 
+				{{ this.msgErrors['nome_completo'] }}
+			</div>
+
+			<ion-item class="input-item">
+				<ion-label position="floating">Nome Social</ion-label>
+				<ion-input formControlName="nome_social" type="text"></ion-input>
+			</ion-item>
+			<div *ngIf="submitForm && !updateForm.controls.nome_social.valid" class="error"> 
+				{{ this.msgErrors['nome_social'] }}
+			</div>
+
+			<ion-item class="input-item">
+				<ion-label position="floating">E-mail</ion-label>
+				<ion-input formControlName="email" type="email"></ion-input>
+			</ion-item>
+			<div *ngIf="submitForm && !updateForm.controls.email.valid" class="error"> 
+				{{ this.msgErrors['email'] }}
+			</div>
+
+			<ion-item class="input-item">
+				<ion-label position="floating">Grau de Instrução</ion-label>
+				<ion-input formControlName="grauinstrucao" type="text"></ion-input>
+			</ion-item>
+			<div *ngIf="submitForm && !updateForm.controls.grauinstrucao.valid" class="error"> 
+				{{ this.msgErrors['grauinstrucao'] }}
+			</div>
+
+			<ion-item class="input-item">
+				<ion-label position="floating">Endereço</ion-label>
+				<ion-input formControlName="endereco" type="text"></ion-input>
+			</ion-item>
+			<div *ngIf="submitForm && !updateForm.controls.endereco.valid" class="error"> 
+				{{ this.msgErrors['endereco'] }}
+			</div>
+
+			<ion-item class="input-item">
+				<ion-label position="floating">Número</ion-label>
+				<ion-input formControlName="numero" type="number"></ion-input>
+			</ion-item>
+			<div *ngIf="submitForm && !updateForm.controls.numero.valid" class="error"> 
+				{{ this.msgErrors['numero'] }}
+			</div>
+
+			<ion-item class="input-item">
+				<ion-label position="floating">Cidade</ion-label>
+				<ion-input formControlName="cidade" type="text"></ion-input>
+			</ion-item>
+			<div *ngIf="submitForm && !updateForm.controls.cidade.valid" class="error"> 
+				{{ this.msgErrors['cidade'] }}
+			</div>
+
+			<ion-item class="input-item">
+				<ion-label position="floating">UF</ion-label>
+				<ion-input formControlName="uf" type="text" (input)='updateChangeValueUf($event.target.value)'></ion-input>
+			</ion-item>
+			<div *ngIf="submitForm && !updateForm.controls.uf.valid" class="error"> 
+				{{ this.msgErrors['uf'] }}
+			</div>
+
+			<!-- <ion-button class="btn-salvar" (click)="takePicture()">Take a picture</ion-button> -->
+
+		</form>
+	</div>
+	
+</ion-content>
+
+<ion-footer class="ion-text-center">
+	<ion-button class="btn-salvar" (click)="salvar()">Salvar</ion-button>
+</ion-footer>

@@ -1,0 +1,164 @@
+<ion-header>
+	<ion-toolbar>
+
+        <ion-title size="undefined">
+            <ion-item class="ion-no-padding ion-item-background-border-transparent">
+                <img style="width: 30px;" src="assets/images/logo-ciclo-educ.png"/>
+                <span class="text-toolbar-title align-center" style="padding-top: 5px;">
+                    PERFIL
+                </span>
+            </ion-item>
+        </ion-title>
+
+        <ion-buttons slot="primary">
+            <ion-button (click)="openUpdateFoto()">
+        		<ion-icon name="images" class="font-size-vinte-cinco"></ion-icon>
+        	</ion-button>
+            <ion-button (click)="openUpdateSenha()">
+                <ion-icon name="lock" class="font-size-vinte-cinco"></ion-icon>
+            </ion-button>
+	        <ion-button (click)="openUpdate()">
+	            <ion-icon name="create" class="font-size-vinte-cinco"></ion-icon>
+	        </ion-button>
+        </ion-buttons>
+
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="background-content">
+
+	<div *ngIf="loading_data_remote" class="add-padding align-center">
+
+		Carregando dados...
+		
+	</div>
+
+	<div *ngIf="!loading_data_remote && !aluno.nome_completo" class="add-padding align-center">
+
+		Atualize os dados do perfil do aluno.
+		
+	</div>
+
+	<div *ngIf="aluno.id">
+
+		<div class="add-padding-top user-photo" *ngIf="aluno.foto">
+			<ion-avatar>
+				<img [src]="aluno.foto">
+			</ion-avatar>
+		</div>
+
+		<div class="add-padding">
+			<ion-item class="border-radius-top-left-right remove-padding-left-item-native" *ngIf="aluno.nome_completo">
+				<ion-label class="text-info-perfil ion-padding-start">
+					<b><p>Nome Completo</p></b>
+					<h2>{{ aluno.nome_completo }}</h2>
+				</ion-label>			
+			</ion-item>
+
+			<ion-item class="remove-padding-left-item-native" *ngIf="aluno.nome_social">
+				<ion-label class="text-info-perfil ion-padding-start">
+					<b><p>Nome Social</p></b>
+					<h2>{{ aluno.nome_social }}</h2>
+				</ion-label>			
+			</ion-item>
+
+			<ion-item class="remove-padding-left-item-native" *ngIf="aluno.email">
+				<ion-label class="text-info-perfil ion-padding-start">
+					<b><p>Email</p></b>
+					<h2>{{ aluno.email }}</h2>
+				</ion-label>			
+			</ion-item>
+
+			<ion-item class="remove-padding-left-item-native" *ngIf="aluno.cpf">
+				<ion-label class="text-info-perfil ion-padding-start">
+					<b><p>CPF</p></b>
+					<h2>{{ aluno.cpf | cpfFormat }}</h2>
+				</ion-label>			
+			</ion-item>
+
+			<ion-item class="remove-padding-left-item-native" *ngIf="aluno.grauinstrucao">
+				<ion-label class="text-info-perfil ion-padding-start">
+					<b><p>Grau de Instrução</p></b>
+					<h2>{{ aluno.grauinstrucao }}</h2>
+				</ion-label>			
+			</ion-item>
+
+			<ion-item class="remove-padding-left-item-native" *ngIf="aluno.endereco">
+				<ion-label class="text-info-perfil ion-padding-start">
+					<b><p>Endereco</p></b>
+					<h2>{{ aluno.endereco }}</h2>
+				</ion-label>			
+			</ion-item>
+
+			<ion-item class="remove-padding-left-item-native" *ngIf="aluno.numero">
+				<ion-label class="text-info-perfil ion-padding-start">
+					<b><p>Número</p></b>
+					<h2>{{ aluno.numero }}</h2>
+				</ion-label>			
+			</ion-item>
+
+			<ion-item class="remove-padding-left-item-native" *ngIf="aluno.cidade">
+				<ion-label class="text-info-perfil ion-padding-start">
+					<b><p>Cidade/UF</p></b>
+					<h2>{{ aluno.cidade }}/{{ aluno.uf }}</h2>
+				</ion-label>			
+			</ion-item>
+
+			<div *ngIf="assinatura.status == 1 || assinatura.status == 4">
+				<ion-item class="remove-padding-left-item-native" *ngIf="plano.nome">
+					<ion-label class="text-info-perfil ion-padding-start">
+						<b><p>Plano</p></b>
+						<h2>{{ plano.nome }}</h2>
+					</ion-label>			
+				</ion-item>
+
+				<ion-item class="border-radius-bottom-left-right remove-padding-left-item-native" *ngIf="plano.nome">
+					<ion-label class="text-info-perfil ion-padding-start">
+						<b><p>Preço do Plano</p></b>
+						<h2>R$ {{ plano.preco | moneyBrFormat }}</h2>
+					</ion-label>			
+				</ion-item>
+			</div>
+
+		</div>
+	</div>
+	
+	<div class="align-center" style="padding-bottom: 20px;">
+
+		<div *ngIf="!loading_boleto_remote">
+        
+        	<div *ngIf="boleto.paymentLink && assinatura.status != 3 && assinatura.forma_pagamento == 'boleto'">
+	            <ion-button class="btn-sair" type="button" (click)="abrirBoleto(boleto.paymentLink)">
+	                Boleto Disponível Para Pagamento
+	            </ion-button>
+        	</div>
+
+	    </div>
+		
+		<div *ngIf="loading_data_assinatura == false">
+
+			<ion-button class="btn-sair" (click)="openGerenciarPlanoModal()" *ngIf="assinatura.status == 0 || assinatura.status == 2 || assinatura.status == 3">
+		 		Assinar
+	        	<ion-icon name="pricetags"></ion-icon>
+	        </ion-button>
+
+			<ion-button class="btn-sair" (click)="openPagamentoModal()" *ngIf="assinatura.status == 4">
+			<!-- <ion-button class="btn-sair" (click)="openPagamentoModal()" *ngIf="assinatura.status == 1"> -->
+		 		Gerenciar Pagamento
+	        	<ion-icon name="cash"></ion-icon>
+	        </ion-button>
+
+	        <ion-button class="btn-sair" (click)="openCancelarAssinaturaModal()" *ngIf="assinatura.status == 1 || assinatura.status == 4">
+		 		Cancelar Assinatura
+	        	<ion-icon name="close-circle"></ion-icon>
+	        </ion-button>
+		</div>
+
+        <ion-button class="btn-sair" (click)="presentAlertConfirmSair()">
+	 		Sair
+        	<ion-icon name="power"></ion-icon>
+        </ion-button>
+	</div>
+
+
+</ion-content>

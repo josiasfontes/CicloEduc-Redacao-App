@@ -1,0 +1,130 @@
+<ion-header>
+    <ion-toolbar>
+
+        <ion-title size="undefined">
+            <ion-item class="ion-no-padding ion-item-background-border-transparent">
+                <img style="width: 30px;" src="assets/images/logo-ciclo-educ.png"/>
+                <span class="text-toolbar-title" style="padding-top: 5px;">
+                    CICLOEDUC
+                </span>
+                <ion-spinner name="crescent" class="font-size-trinta" [hidden]="!loading_data_assinatura_remote" slot="end"></ion-spinner>
+                <ion-icon name="refresh-circle" class="font-size-trinta" [hidden]="loading_data_assinatura_remote" (click)="getDataAssinaturaRemote()" slot="end"></ion-icon>
+            </ion-item>
+        </ion-title>
+
+        <!-- <ion-buttons slot="primary">
+            <ion-button>
+                <ion-icon name="ios-filing"></ion-icon>
+            </ion-button>
+        </ion-buttons> -->
+      
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="background-content">
+
+    <div *ngIf="!loading_data_assinatura_remote && assinatura_status_code == null" class="ion-padding" style="padding-top: 15%;color: #0D313D;font-size: 20px;">
+        Atenção! Estamos processando sua assinatura.
+        <ion-button class="btn-big" (click)="getDataAssinaturaRemote()">
+            Verificar Assinatura
+        </ion-button>
+    </div>
+
+    <!-- <div *ngIf="!loading_data_assinatura_remote && assinatura.plano == null">
+
+        <div class="ion-padding" style="padding-top: 15%;color: #0D313D;font-size: 20px;">
+            Atenção! Você não possui nenhum plano.
+        </div>
+
+        <div class="ion-padding" style="padding-top: 10%;">
+            Por Favor! Acesse <b>Perfil</b> > <b> Gerenciar Plano </b>.
+        </div>
+
+    </div> -->
+
+    <!-- <div *ngIf="assinatura.plano != null">
+        
+        <div *ngIf="!loading_data_assinatura_remote && assinatura_status_code != null">
+        
+            <div *ngIf="assinatura_status_code == 1">
+                <div class="ion-text-center" style="font-weight: bold;padding-top: 15%;font-size: 25px; color: #0D313D;">
+                    ROSEM....
+                </div>
+
+                <div class="ion-text-center" style="color: #0D313D;">
+                    ___
+                </div>
+
+                <div class="ion-text-center" style="padding-top: 2%;color: #0D313D;font-size: 15px;">
+                    Seu assistente virtual de REDAÇÃO!
+                </div>
+                
+                <div class="ion-text-center">
+                    <img src="/assets/images/rosem_transparent.png" style="width: 40%;padding-top: 15%;">
+                </div>
+            </div>
+
+            <div *ngIf="assinatura_status_code != 1" class="ion-text-center">
+                
+                <div class="ion-padding" style="padding-top: 15%;color: #0D313D;font-size: 20px;">
+                    Atenção! Sua assinatura encontra-se <b>{{ assinatura_situacao_text }}</b>.
+                </div>
+
+                <div class="ion-padding" *ngIf="assinatura_status_code == 0" style="padding-top: 10%;">
+                    Por Favor! Acesse <b>Perfil</b> > <b> Gerenciar Pagamento </b>.
+                </div>
+
+            </div>
+
+        </div>
+
+    </div> -->
+
+    <!-- <div *ngIf="assinatura.plano != null"> -->
+        
+        <div *ngIf="!loading_data_assinatura_remote && assinatura_status_code != null">
+        
+            <div *ngIf="assinatura_status_code == 1">
+                <!-- <div class="ion-text-center" style="font-weight: bold;padding-top: 15%;font-size: 25px; color: #0D313D;">
+                    ROSEM....
+                </div> -->
+
+                <div class="ion-text-center" style="padding-top: 15%;">
+                    <img style="width: 200px;" src="assets/images/rosembot_novo.png"/>
+                </div>
+
+                <div class="ion-text-center" style="color: #0D313D;">
+                    ___
+                </div>
+
+                <div class="ion-text-center" style="padding-top: 2%;color: #0D313D;font-size: 15px;">
+                    Seu assistente virtual de REDAÇÃO!
+                </div>
+                
+                <div class="ion-text-center">
+                    <img src="/assets/images/rosem_transparent.png" style="width: 40%;padding-top: 15%;">
+                </div>
+
+            </div>
+
+            <div *ngIf="assinatura_status_code != 1" class="ion-text-center">
+                
+                <div class="ion-padding" style="padding-top: 15%;color: #0D313D;font-size: 20px;">
+                    Atenção! Sua assinatura encontra-se <b>{{ assinatura_situacao_text }}</b>.
+                </div>
+
+                <div class="ion-padding" *ngIf="assinatura_status_code == 0 || assinatura_status_code == 2 || assinatura_status_code == 3" style="padding-top: 10%;">
+                    Por Favor! Acesse <b>Perfil</b> > <b> Assinar </b>.
+                </div>
+
+                <div class="ion-padding" *ngIf="assinatura_status_code == 4" style="padding-top: 10%;">
+                    Por Favor! Acesse <b>Perfil</b> > <b> Gerenciar Pagamento </b>.
+                </div>
+
+            </div>
+
+        </div>
+
+    <!-- </div> -->
+
+</ion-content>

@@ -1,0 +1,47 @@
+ion-card {
+	margin-top: 0px;
+}
+
+.welcome-card img {
+  max-height: 35vh;
+  overflow: hidden;
+}
+
+.background-content ion-card {
+	--background: #FFFFFF;	
+}
+
+.label-card {
+	color: #0D313D; 
+	font-weight: bold; 
+	padding-left: 10px; 
+	padding-right: 10px;
+	font-size: 14px;
+}
+
+.text-toolbar-title {
+	color: #0D313D; 
+	font-weight: bold; 
+	padding-left: 10px; 
+	padding-right: 10px;
+}
+
+.header-ios ion-toolbar {
+    padding: 8px 8px 8px 15px;
+}
+
+.add-eight-margin-top {
+	margin-top: 8px;
+}
+
+.btn-big {
+    --background: #0D313D;
+    --border-radius: 5px;
+    width: 95%;
+    height: 45px;
+}
+
+.font-size-trinta {
+    font-size: 30px !important;
+}
+

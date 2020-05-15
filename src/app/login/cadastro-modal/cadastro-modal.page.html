@@ -1,0 +1,117 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title size="undefined">
+            <ion-item class="ion-no-padding ion-item-background-border-transparent">
+            	<ion-icon name="arrow-back" (click)="closeModal()"></ion-icon>
+                <img style="width: 30px; margin-left: 5px;" src="assets/images/logo-ciclo-educ.png"/>
+                <span class="text-toolbar-title" style="padding-top: 5px;">
+                    CADASTRO
+                </span>
+            </ion-item>
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="background-content">
+
+	<div class="ion-padding">
+
+		<form [formGroup]="cadastroForm">
+		
+			<ion-item class="input-item">
+				<ion-label position="floating">Nome Completo</ion-label>
+				<ion-input formControlName="nome_completo" type="text"></ion-input>
+			</ion-item>
+			<div *ngIf="submitForm && !cadastroForm.controls.nome_completo.valid" class="error"> 
+				{{ this.msgErrors['nome_completo'] }}
+			</div>
+
+			<ion-item class="input-item">
+				<ion-label position="floating">Nome Social</ion-label>
+				<ion-input formControlName="nome_social" type="text"></ion-input>
+			</ion-item>
+			<div *ngIf="submitForm && !cadastroForm.controls.nome_social.valid" class="error"> 
+				{{ this.msgErrors['nome_social'] }}
+			</div>
+
+			<!-- <ion-item class="input-item">
+				<ion-label position="floating">Grau de Instrução</ion-label>
+				<ion-input formControlName="grau_instrucao" type="text"></ion-input>
+			</ion-item>
+			<div *ngIf="submitForm && !cadastroForm.controls.grau_instrucao.valid" class="error"> 
+				{{ this.msgErrors['grau_instrucao'] }}
+			</div> -->
+
+			<ion-item class="input-item">
+				<ion-label position="floating">E-mail</ion-label>
+				<ion-input formControlName="email" type="email"></ion-input>
+			</ion-item>
+			<div *ngIf="submitForm && !cadastroForm.controls.email.valid" class="error"> 
+				{{ this.msgErrors['email'] }}
+			</div>
+
+			<ion-item class="input-item">
+				<ion-label position="floating">CPF</ion-label>
+				<ion-input formControlName="cpf" type="tel" [brmasker]="{mask:'000.000.000-00', len:14 }"></ion-input>
+			</ion-item>
+			<div *ngIf="submitForm && !cadastroForm.controls.cpf.valid" class="error"> 
+				{{ this.msgErrors['cpf'] }}
+			</div>
+
+			<!-- 
+
+			<ion-item class="input-item">
+				<ion-label position="floating">Endereço</ion-label>
+				<ion-input formControlName="endereco" type="text"></ion-input>
+			</ion-item>
+			<div *ngIf="submitForm && !cadastroForm.controls.endereco.valid" class="error"> 
+				{{ this.msgErrors['endereco'] }}
+			</div>
+
+			<ion-item class="input-item">
+				<ion-label position="floating">Número</ion-label>
+				<ion-input formControlName="numero" type="text"></ion-input>
+			</ion-item>
+			<div *ngIf="submitForm && !cadastroForm.controls.numero.valid" class="error"> 
+				{{ this.msgErrors['numero'] }}
+			</div>
+
+			<ion-item class="input-item">
+				<ion-label position="floating">Cidade</ion-label>
+				<ion-input formControlName="cidade" type="text"></ion-input>
+			</ion-item>
+			<div *ngIf="submitForm && !cadastroForm.controls.cidade.valid" class="error"> 
+				{{ this.msgErrors['cidade'] }}
+			</div>
+
+			<ion-item class="input-item">
+				<ion-label position="floating">UF</ion-label>
+				<ion-input formControlName="uf" type="text"></ion-input>
+			</ion-item>
+			<div *ngIf="submitForm && !cadastroForm.controls.uf.valid" class="error"> 
+				{{ this.msgErrors['uf'] }}
+			</div> -->
+
+			<ion-item class="input-item">
+				<ion-label position="floating">Senha</ion-label>
+				<ion-input formControlName="password1" type="password"></ion-input>
+			</ion-item>
+			<div *ngIf="submitForm && !cadastroForm.controls.password1.valid" class="error"> 
+				{{ this.msgErrors['password1'] }}
+			</div>
+
+			<ion-item class="input-item">
+				<ion-label position="floating">Confirme Senha</ion-label>
+				<ion-input formControlName="password2" type="password"></ion-input>
+			</ion-item>
+			<div *ngIf="submitForm && !cadastroForm.controls.password2.valid" class="error"> 
+				{{ this.msgErrors['password2'] }}
+			</div>
+
+		</form>
+	</div>
+</ion-content>
+
+<ion-footer class="ion-text-center">
+	<ion-button class="btn-salvar" (click)="salvar()">Salvar</ion-button>
+</ion-footer>

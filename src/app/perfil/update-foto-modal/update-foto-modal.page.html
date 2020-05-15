@@ -1,0 +1,40 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title size="undefined">
+            <ion-item class="ion-no-padding ion-item-background-border-transparent">
+            	<ion-icon name="arrow-back" (click)="closeModal('null')"></ion-icon>
+                <img style="width: 30px; margin-left: 5px;" src="assets/images/logo-ciclo-educ.png"/>
+                <span class="text-toolbar-title" style="padding-top: 5px;">
+                    ATUALIZAR FOTO
+                </span>
+            </ion-item>
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+	<div *ngIf="!image.path" class="ion-text-center add-padding-top-quize">
+		Selecione uma imagem...
+	</div>
+
+	<div *ngIf="image.path" class="ion-text-center add-padding-top-quize user-photo">
+		
+
+		<ion-avatar>
+        	<img [src]="croppedImagepath" />
+		</ion-avatar>
+
+		<div style="padding-top: 20px;">
+			Pré-visualização da imagem...
+		</div>
+	</div>
+
+</ion-content>
+
+<ion-footer class="ion-text-center">
+	<ion-button class="btn-salvar" (click)="takePicture()">Selecionar Imagem</ion-button>
+	<div *ngIf="image.path">
+		<ion-button class="btn-salvar" (click)="saveRemote()">Salvar Foto</ion-button>
+	</div>
+</ion-footer>

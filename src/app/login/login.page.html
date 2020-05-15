@@ -1,0 +1,137 @@
+<ion-content class="background-content" style="overflow-y: scroll;">
+
+	<div class="align-center image-logo">
+		<img class="size-image-login" src="assets/images/logo-ciclo-educ.png"/>
+	</div>
+
+	<div class="align-center texto-um">
+		Crie agora a sua conta
+	</div>
+
+	<div class="align-center texto-dois">
+		Se já possui usuário, faça Login.
+	</div>
+
+	<div class="padding-input-login">
+
+		<form [formGroup]="loginForm">
+
+			<ion-item class="input-item">
+				<ion-label>
+	                <ion-icon name="person"></ion-icon>
+	            </ion-label>
+	            <ion-input
+	            	formControlName="email"
+	            	autocapitalize="off" 
+	            	placeholder="E-mail"
+	            	autocomplete="off" 
+	            	autofocus="true"
+	            	type="email"></ion-input>
+			</ion-item>
+
+			<ion-item class="input-item">
+				<ion-label>
+	                <ion-icon name="lock"></ion-icon>
+	            </ion-label>
+	            <ion-input 
+	            	formControlName="password" 
+	            	placeholder="Senha" 
+	            	autocomplete="false"
+	            	type="password"></ion-input>
+			</ion-item>
+
+			<div>
+				<ion-button class="btn-entrar" (click)="login()">Entrar</ion-button>
+	        </div>
+
+		</form>
+
+        <ion-item class="ion-item-background-border-transparent ion-text-center">
+        	<!-- <ion-label (click)="openCadastro()">Esqueci a senha</ion-label> -->
+        	<ion-label (click)="openCadastro()" class="label-cadastre-esqueci-senha">
+        		Cadastre-se
+        	</ion-label>
+        </ion-item>
+
+	</div>
+	
+
+</ion-content>
+
+
+<!-- <ion-content>
+
+	<div class="align-center image-logo">
+		<img class="size-image-login" src="assets/images/logo-ciclo-educ.png"/>
+	</div>
+
+	<div class="align-center texto-um">
+		Crie agora a sua conta
+	</div>
+
+	<div class="align-center texto-dois">
+		Se já possui usuário, clique em Login.
+	</div>
+
+
+	<ion-toolbar style="margin-top: 50px;">
+		
+		<ion-segment>
+			
+			<ion-segment-button 
+				(ionSelect)="segmentButtonCadastreseClicked($event)"
+				class="text-tabs-login" 
+				value="cadastre-se" 
+				checked 
+				mode="md">
+				<span class="no-text-transform">Cadastre-se</span>
+			</ion-segment-button>
+
+			<ion-segment-button 
+				(ionSelect)="segmentButtonLoginClicked($event)"
+				class="text-tabs-login" 
+				value="login" 
+				mode="md">
+				<span class="no-text-transform">Login</span>
+			</ion-segment-button>
+
+		</ion-segment>
+
+	</ion-toolbar>
+
+	<div *ngIf="!hiddenCadastrese ">
+		
+		<div class="align-center">
+			<ion-button class="btn-cadastrese-formaum" (click)="start()">
+				FORMA 1
+			</ion-button>
+		</div>
+		
+		<div class="align-center">
+			<ion-button fill="outline" class="btn-cadastrese-formadois" (click)="start()">
+				FORMA 2
+			</ion-button>
+		</div>
+
+		<div class="align-center">
+			<ion-button fill="outline" class="btn-cadastrese-formadois" (click)="openCadastro()">
+				Cadastro
+			</ion-button>
+		</div>
+
+	</div>
+
+	<div *ngIf="!hiddenLogin">
+		
+		<div class="align-center">
+			<ion-button class="btn-cadastrese-formaum" (click)="start()">
+				Abrir Formulário
+			</ion-button>
+		</div>
+
+	</div>
+
+	
+
+</ion-content>
+ -->

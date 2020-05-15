@@ -1,0 +1,155 @@
+<ion-header>
+	<ion-toolbar>
+
+        <ion-title size="undefined">
+            <ion-item class="ion-no-padding ion-item-background-border-transparent">
+            	<ion-icon name="arrow-back" (click)="closeModal('null')"></ion-icon>
+                <img style="width: 30px;" src="assets/images/logo-ciclo-educ.png"/>
+                <span class="text-toolbar-title align-center" style="padding-top: 5px;">
+                    PAGAR COM CARTÃO CRÉDITO
+                </span>
+            </ion-item>
+        </ion-title>
+
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+	<div class="ion-padding">
+
+        <form [formGroup]="pagamentoCartaoForm">
+
+            <div style="font-size: 18px;padding-left: 10px; padding-bottom: 10px; padding-top: 20px;">
+                <b> DADOS DO CARTÃO </b>
+            </div>
+
+            <ion-item class="input-item">
+                <ion-label position="floating">Número</ion-label>
+                <ion-input formControlName="numero_cartao" type="tel" [brmasker]="{mask:'0000 0000 0000 0000', len:19 }"></ion-input>
+            </ion-item>
+            <div *ngIf="submitCartaoForm && !pagamentoCartaoForm.controls.numero_cartao.valid" class="error"> 
+                {{ this.msgErrors['numero_cartao'] }}
+            </div>
+
+            <ion-item class="input-item">
+                <ion-label position="floating">Validade</ion-label>
+                <ion-input formControlName="validade" type="tel" [brmasker]="{mask:'00/0000', len:7 }"></ion-input>
+            </ion-item>
+            <div *ngIf="submitCartaoForm && !pagamentoCartaoForm.controls.validade.valid" class="error"> 
+                {{ this.msgErrors['validade'] }}
+            </div>
+
+            <ion-item class="input-item">
+                <ion-label position="floating">Cód. Segurança (CVV)</ion-label>
+                <ion-input formControlName="cod_seguranca" type="tel" [brmasker]="{mask:'000', len:3 }"></ion-input>
+            </ion-item>
+            <div *ngIf="submitCartaoForm && !pagamentoCartaoForm.controls.cod_seguranca.valid" class="error"> 
+                {{ this.msgErrors['cod_seguranca'] }}
+            </div>
+        
+            <ion-item class="input-item">
+                <ion-label position="floating">Nome no Cartão</ion-label>
+                <ion-input formControlName="nome_cartao" type="text"></ion-input>
+            </ion-item>
+            <div *ngIf="submitCartaoForm && !pagamentoCartaoForm.controls.nome_cartao.valid" class="error"> 
+                {{ this.msgErrors['nome_cartao'] }}
+            </div>
+
+            <div style="font-size: 18px;padding-left: 10px; padding-bottom: 10px; padding-top: 25px;">
+                <b> DADOS DO DONO DO CARTÃO </b>
+            </div>
+
+            <ion-item class="input-item">
+                <ion-label position="floating">Data Nascimento</ion-label>
+                <ion-input formControlName="data_nascimento" type="tel" [brmasker]="{mask:'00/00/0000', len:10 }"></ion-input>
+            </ion-item>
+            <div *ngIf="submitCartaoForm && !pagamentoCartaoForm.controls.data_nascimento.valid" class="error"> 
+                {{ this.msgErrors['data_nascimento'] }}
+            </div>
+
+            <ion-item class="input-item">
+                <ion-label position="floating">CPF do Titular</ion-label>
+                <ion-input formControlName="cpf_titular" type="tel" [brmasker]="{mask:'000.000.000-00', len:14 }"></ion-input>
+            </ion-item>
+            <div *ngIf="submitCartaoForm && !pagamentoCartaoForm.controls.cpf_titular.valid" class="error"> 
+                {{ this.msgErrors['cpf_titular'] }}
+            </div>
+
+            <ion-item class="input-item">
+                <ion-label position="floating">Telefone</ion-label>
+                <ion-input formControlName="telefone" type="tel" [brmasker]="{mask:'(00) 00000 0000', len:15 }"></ion-input>
+            </ion-item>
+            <div *ngIf="submitCartaoForm && !pagamentoCartaoForm.controls.telefone.valid" class="error"> 
+                {{ this.msgErrors['telefone'] }}
+            </div>
+
+            <div style="font-size: 18px;padding-left: 10px; padding-bottom: 10px; padding-top: 25px;">
+                <b> ENDEREÇO DE COBRANÇA </b>
+            </div>
+
+            <ion-item class="input-item">
+                <ion-label position="floating">Logradouro</ion-label>
+                <ion-input formControlName="logradouro" type="text"></ion-input>
+            </ion-item>
+            <div *ngIf="submitCartaoForm && !pagamentoCartaoForm.controls.logradouro.valid" class="error"> 
+                {{ this.msgErrors['logradouro'] }}
+            </div>
+
+            <ion-item class="input-item">
+                <ion-label position="floating">Número</ion-label>
+                <ion-input formControlName="numero" type="tel"></ion-input>
+            </ion-item>
+            <div *ngIf="submitCartaoForm && !pagamentoCartaoForm.controls.numero.valid" class="error"> 
+                {{ this.msgErrors['numero'] }}
+            </div>
+
+            <ion-item class="input-item">
+                <ion-label position="floating">Complemento</ion-label>
+                <ion-input formControlName="complemento" type="text"></ion-input>
+            </ion-item>
+            <div *ngIf="submitCartaoForm && !pagamentoCartaoForm.controls.complemento.valid" class="error"> 
+                {{ this.msgErrors['complemento'] }}
+            </div>
+
+            <ion-item class="input-item">
+                <ion-label position="floating">Bairro</ion-label>
+                <ion-input formControlName="bairro" type="text"></ion-input>
+            </ion-item>
+            <div *ngIf="submitCartaoForm && !pagamentoCartaoForm.controls.bairro.valid" class="error"> 
+                {{ this.msgErrors['bairro'] }}
+            </div>
+
+            <ion-item class="input-item">
+                <ion-label position="floating">Cidade</ion-label>
+                <ion-input formControlName="cidade" type="text"></ion-input>
+            </ion-item>
+            <div *ngIf="submitCartaoForm && !pagamentoCartaoForm.controls.cidade.valid" class="error"> 
+                {{ this.msgErrors['cidade'] }}
+            </div>
+
+            <ion-item class="input-item">
+                <ion-label position="floating">UF</ion-label>
+                <ion-input (input)='updateChangeValueUf($event.target.value)' formControlName="uf" type="text"></ion-input>
+            </ion-item>
+            <div *ngIf="submitCartaoForm && !pagamentoCartaoForm.controls.uf.valid" class="error"> 
+                {{ this.msgErrors['uf'] }}
+            </div>
+
+            <ion-item class="input-item">
+                <ion-label position="floating">CEP</ion-label>
+                <ion-input formControlName="cep" type="tel" [brmasker]="{mask:'00.000-000', len:10 }"></ion-input>
+            </ion-item>
+            <div *ngIf="submitCartaoForm && !pagamentoCartaoForm.controls.cep.valid" class="error"> 
+                {{ this.msgErrors['cep'] }}
+            </div>
+        
+        </form>
+
+    </div>
+
+</ion-content>
+
+<ion-footer class="ion-text-center">
+    <ion-button class="btn-salvar" (click)="salvar()">Salvar</ion-button>
+</ion-footer>

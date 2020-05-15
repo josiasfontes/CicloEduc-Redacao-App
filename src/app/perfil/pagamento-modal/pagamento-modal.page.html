@@ -1,0 +1,86 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title size="undefined">
+            <ion-item class="ion-no-padding ion-item-background-border-transparent">
+            	<ion-icon name="arrow-back" (click)="closeModal('refresh_data_aluno')"></ion-icon>
+                <img style="width: 30px; margin-left: 5px;" src="assets/images/logo-ciclo-educ.png"/>
+                <span class="text-toolbar-title" style="padding-top: 5px;">
+                    GERENCIAR PAGAMENTO
+                </span>
+            </ion-item>
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <div style="padding-top: 3%;" class="ion-text-center" *ngIf="loadingRequestAssinatura == false">
+        <div class="ion-padding" style="padding-top: 15%;color: #0D313D;font-size: 20px;">
+            Atenção! Sua assinatura encontra-se <b>{{ assinatura_situacao_text }}</b>.
+        </div>
+    </div>
+
+    <div *ngIf="loading_boleto_remote == false" style="padding-top: 20px; font-size: 18px;" class="ion-text-center">
+        
+        <div *ngIf="boleto.paymentLink != null">
+            <ion-button class="btn-big" type="button" (click)="abrirBoleto(boleto.paymentLink)">
+                Boleto Disponível Para Pagamento
+            </ion-button>
+        </div>
+
+    </div>
+
+    <div *ngIf="loadingRequestAssinatura == false" style="padding-top: 20px; font-size: 18px;" class="ion-text-center">
+            
+            <div *ngIf="assinatura.status == 4">
+                <div *ngIf="assinatura.forma_pagamento == 'boleto'">
+                    Pagamento com boleto bancário.
+                </div>
+                <div *ngIf="assinatura.forma_pagamento != 'boleto'">
+                    Pagamento com cartão de crédito.
+                </div>
+            </div>
+
+            <div *ngIf="assinatura.status == 0 || assinatura.status == 2 || assinatura.status == 3">
+                <ion-button class="btn-big" type="button" (click)="openCartaoCreditoModal()">
+                    Cartão de Crédito
+                </ion-button>
+                
+                <ion-button class="btn-big" type="button" (click)="openBoletoModal()">
+                    Boleto Bancário
+                </ion-button>
+            </div>
+        </div>
+
+
+    <!-- <div *ngIf="!loading_boleto_remote && !boleto.paymentLink" style="padding-top: 20px; font-size: 18px;" class="align-center">
+        
+    	<div style="padding-top: 3%;" class="ion-text-center" *ngIf="assinatura_status_code != 1">
+
+            <div class="ion-padding" style="padding-top: 15%;color: #0D313D;font-size: 20px;">
+                Atenção! Sua assinatura encontra-se <b>{{ assinatura_situacao_text }}</b>.
+            </div>
+            
+            <ion-button class="btn-big" type="button" (click)="openCartaoCreditoModal()">
+            	Cartão de Crédito
+            </ion-button>
+            
+            <ion-button class="btn-big" type="button" (click)="openBoletoModal()">
+            	Boleto Bancário
+            </ion-button>
+        </div>
+
+    </div> -->
+	
+
+    <!-- <div style="padding-top: 3%;" class="ion-text-center" *ngIf="loadingRequestAssinatura == false && assinatura_status_code == 1">
+        <div class="ion-padding" style="padding-top: 15%;color: #0D313D;font-size: 20px;">
+            Sua assinatura encontra-se <b>{{ assinatura_situacao_text }}</b>. Nenhuma ação de pagamento pode ser realizada.
+        </div>
+
+        <ion-button class="btn-big" type="button" (click)="getDataAssinaturaRemote()">
+            Atualizar
+        </ion-button>
+    </div> -->
+
+</ion-content>

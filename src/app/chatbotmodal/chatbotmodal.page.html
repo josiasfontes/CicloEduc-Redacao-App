@@ -1,0 +1,20 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title size="undefined">
+            <ion-item class="ion-no-padding ion-item-background-border-transparent">
+                <ion-icon name="arrow-back" (click)="closeModal()"></ion-icon>
+                <!-- <img style="width: 30px; margin-left: 5px;" src="assets/images/logo-ciclo-educ.png"/> -->
+                <img style="width: 30px; margin-left: 5px;" src="assets/images/roboperfil.png"/>
+                <span class="text-toolbar-title" style="padding-top: 5px;">
+                    CHAT COM ROSEM
+                </span>
+            </ion-item>
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    
+    <iframe [src]="urlBotFramework" style="width: 100%; height: 100%;" (load)="onLoad()"></iframe>
+
+</ion-content>

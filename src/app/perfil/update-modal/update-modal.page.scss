@@ -1,0 +1,39 @@
+
+/*::ng-deep .sc-ion-modal-md-h, ::ng-deep .sc-ion-modal-ios-h {
+    --width: 80%;
+    --height: 60%;
+}*/
+
+.input-item {
+    --highlight-color-focused: transparent;
+    --border-width: 1px;
+    --border-radius: 5px;
+    padding: 2px;
+    --highlight-color-valid: transparent;
+    --highlight-color-invalid: transparent;
+}
+
+.text-toolbar-title {
+    color: #0D313D; 
+    font-weight: bold; 
+    padding-left: 10px; 
+    padding-right: 10px;
+}
+
+.header-ios ion-toolbar {
+    padding: 8px 8px 8px 15px;
+}
+
+.btn-salvar {
+    --background: #0D313D;
+    --border-radius: 5px;
+    width: 95%;
+    height: 45px;
+}
+
+.error {
+    color: #ff0000;
+    font-size: 12px;
+    font-weight: bold;
+    padding-left: 5px;
+}

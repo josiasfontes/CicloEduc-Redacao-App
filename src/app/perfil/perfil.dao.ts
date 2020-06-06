@@ -14,7 +14,7 @@ export class PerfilDAO {
     list() {
         return new Promise((resolve, reject) => {
             this.dao.getDB().then((storage) => {
-                let sql = `SELECT * FROM aluno`;
+                let sql = `SELECT * FROM aluno WHERE id = 1`;
                 storage.executeSql(sql, []).then((data) => {
                     let aluno = {};
                     if(data.rows.length > 0) {

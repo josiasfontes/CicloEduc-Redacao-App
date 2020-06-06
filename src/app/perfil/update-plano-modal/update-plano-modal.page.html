@@ -32,7 +32,9 @@
 		    	<ion-label style="white-space: normal;">{{ plano.nome }}</ion-label>
 		    	<span class="align-right" style="font-size: 13px;">
 		      		<b>Preço: R$ {{ plano.preco | moneyBrFormat }}</b><br/>
-		      		Adesão: R$ {{ plano.taxa_adesao | moneyBrFormat }}
+		      		<span *ngIf="plano.taxa_adesao">
+		      			Adesão: R$ {{ plano.taxa_adesao | moneyBrFormat }}
+		      		</span>
 		      	</span>
 	      		<ion-radio slot="start" value="{{ plano.id }}"></ion-radio>
 		    </ion-item>	    	

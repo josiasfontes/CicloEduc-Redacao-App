@@ -60,7 +60,6 @@ export class UpdatePlanoModalPage implements OnInit {
     	this.presentLoading().then(
             (loading:any)=> {
 
-                //REVER ESSE METODO (usar: https://cicloeduc.com.br/assinaturas/assinatura/aderir_plano)
 		    	this.apiService.put('assinaturas/assinatura', {
 		    		plano: this.plano_id
 		    	}).then(

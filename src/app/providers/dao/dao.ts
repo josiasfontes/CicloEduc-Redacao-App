@@ -55,16 +55,16 @@ export class DAO {
                             .then(() => null/*console.log('TABELA ALUNO CRIADA...')*/)
                             .catch(e => console.log(JSON.stringify(e)));
 
-                            // db.executeSql(`
+                            db.executeSql(`
 
-                            //     INSERT INTO aluno 
-                            //         (nome_completo, apelido_plataforma, cpf, email, endereco_completo, grauinstrucao) 
-                            //         VALUES ('Jose da Silva', 'jose', 12345678909, 'jose@email.com', 'rua de teste, nº 10,', 'Ensino Medio')
-                            //     ;
+                                INSERT OR REPLACE INTO aluno 
+                                    (nome_completo, nome_social, email, cpf, grauinstrucao, foto, endereco, numero, cidade, uf) 
+                                    VALUES ('nulo', 'nulo', 'nulo', 'nulo', 'nulo', 'nulo', 'nulo', 'nulo', 'nulo', 'nu')
+                                ;
 
-                            // `, [])
-                            // .then(() => console.log('REGISTRO INSERIDO EM ALUNO...'))
-                            // .catch(e => console.log(JSON.stringify(e)));
+                            `, [])
+                            .then(() => console.log('REGISTRO INSERIDO EM ALUNO...'))
+                            .catch(e => console.log(JSON.stringify(e)));
 
 
                             // db.executeSql(`

@@ -46,7 +46,7 @@ export class LoginPage implements OnInit {
             ],
             password: [
                 '', 
-                // 'ciclo.123', 
+                // 'josias2020', 
                 Validators.compose([
                     Validators.required
                 ])
@@ -178,9 +178,17 @@ export class LoginPage implements OnInit {
     }
 
     saveAlunoDataLocal(alunoData){
-        this.perfilService.create(alunoData).then(
-            (alunoDataCreate:any) => {},
-            (err) => {}
+        // this.perfilService.create(alunoData).then(
+        //     (alunoDataCreate:any) => {},
+        //     (err) => {}
+        // );
+        this.perfilService.update(alunoData).then(
+            (data) => {
+                console.log('ALUNO UPDATE LOCAL: '+ JSON.stringify(data));
+            },
+            (err) => {
+                console.log('ERRO_UPDATE_ALUNO_LOCAL'+ JSON.stringify(err));
+            }
         );
     }
     

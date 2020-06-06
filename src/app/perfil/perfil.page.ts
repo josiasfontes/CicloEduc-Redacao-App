@@ -180,9 +180,9 @@ export class PerfilPage {
                         this.aluno.foto = (this.aluno.foto == null) ? "assets/user-dois.png" : this.aluno.foto;
                     }
             	}
-                else {
-                    this.saveAlunoDataLocal(this.aluno);
-                }
+                // else {
+                //     this.saveAlunoDataLocal(this.aluno);
+                // }
 
             	loading.dismiss();
 
@@ -194,12 +194,12 @@ export class PerfilPage {
         );
     }
 
-    saveAlunoDataLocal(alunoData){
-        this.perfilService.create(alunoData).then(
-            (alunoDataCreate:any) => {},
-            (err) => {}
-        );
-    }
+    // saveAlunoDataLocal(alunoData){
+    //     this.perfilService.create(alunoData).then(
+    //         (alunoDataCreate:any) => {},
+    //         (err) => {}
+    //     );
+    // }
 
     updateAlunoLocal(){
         return new Promise((resolve, reject) => {
